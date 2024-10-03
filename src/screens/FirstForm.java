@@ -14,7 +14,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.AttributeSet;
 import java.text.ParseException;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author Windows
@@ -182,6 +182,11 @@ public class FirstForm extends javax.swing.JFrame {
         });
 
         jButton3.setText("Pesquisar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Editar");
 
@@ -339,7 +344,7 @@ public class FirstForm extends javax.swing.JFrame {
     String statusPrisioneiro = campoStatusPrisioneiro.getText();
 
     // Criando uma nova instância de Pessoa
-    Pessoa pessoa = new Pessoa(nome, cpf, rg, dataDeNascimento, nomeMae, nomePai, unidadePrisional, crime, statusPrisioneiro);
+    Pessoa pessoa = new Pessoa(nome, cpf, rg, nomeMae, nomePai, unidadePrisional, crime, statusPrisioneiro);
     System.out.println("nome: " + pessoa.nome + "\nCPF: " + pessoa.cpf);
     // Agora você pode fazer algo com a instância da pessoa, como salvar em um banco de dados ou exibir em uma lista.
     limparCampos();
@@ -378,6 +383,30 @@ public class FirstForm extends javax.swing.JFrame {
     private void campoDataSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDataSaidaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoDataSaidaActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+                                               
+    String cpf = campoCPF.getText(); // Captura o CPF do campo de texto
+
+    PessoaDAO pessoaDAO = new PessoaDAO();
+    Pessoa pessoa = pessoaDAO.buscarPorCPF(cpf); // Busca a pessoa pelo CPF
+    
+    if (pessoa != null) {
+        // Se a pessoa foi encontrada, exiba os dados nos campos correspondentes
+        campoNome.setText(pessoa.getNome());
+        campoRG.setText(pessoa.getRg());
+        campoNomeMae.setText(pessoa.getNomeMae());
+        campoNomePai.setText(pessoa.getNomePai());
+        campoUnidadePrisional.setText(pessoa.getUnidadePrisional());
+        campoCrime.setText(pessoa.getCrime());
+        campoStatusPrisioneiro.setText(pessoa.getStatusPrisioneiro());
+    } else {
+        // Se a pessoa não foi encontrada, exibe uma mensagem
+        JOptionPane.showMessageDialog(null, "CPF não encontrado no banco de dados.");
+    }
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
         // Método para limpar os campos do formulário
 private void limparCampos() {
     campoNome.setText("");
