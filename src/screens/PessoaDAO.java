@@ -10,16 +10,16 @@ public class PessoaDAO {
 
     public Pessoa buscarPorCPF (String cpf) {
         Pessoa pessoa = null;
-        String sql = "SELECT * FROM pessoa WHERE cpf = ?"; // Ajuste o nome da tabela e os campos conforme seu banco
+        String sql = "SELECT * FROM presidiario WHERE cpf = ?"; 
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-            stmt.setString(1, cpf); // Define o valor do CPF na consulta
+            stmt.setString(1, cpf); 
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                // Se encontrou a pessoa, crie uma nova instância da classe Pessoa
+
                 pessoa = new Pessoa(
                     rs.getString("nome"), 
                     rs.getString("cpf"), 
@@ -34,6 +34,6 @@ public class PessoaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return pessoa; // Retorna a pessoa encontrada ou null se não houver correspondência
+        return pessoa;
     }
 }

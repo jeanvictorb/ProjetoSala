@@ -189,6 +189,11 @@ public class FirstForm extends javax.swing.JFrame {
         });
 
         jButton4.setText("Editar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -386,13 +391,12 @@ public class FirstForm extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
                                                
-    String cpf = campoCPF.getText(); // Captura o CPF do campo de texto
+    String cpf = campoCPF.getText(); 
 
     PessoaDAO pessoaDAO = new PessoaDAO();
-    Pessoa pessoa = pessoaDAO.buscarPorCPF(cpf); // Busca a pessoa pelo CPF
+    Pessoa pessoa = pessoaDAO.buscarPorCPF(cpf); 
     
     if (pessoa != null) {
-        // Se a pessoa foi encontrada, exiba os dados nos campos correspondentes
         campoNome.setText(pessoa.getNome());
         campoRG.setText(pessoa.getRg());
         campoNomeMae.setText(pessoa.getNomeMae());
@@ -401,13 +405,18 @@ public class FirstForm extends javax.swing.JFrame {
         campoCrime.setText(pessoa.getCrime());
         campoStatusPrisioneiro.setText(pessoa.getStatusPrisioneiro());
     } else {
-        // Se a pessoa não foi encontrada, exibe uma mensagem
         JOptionPane.showMessageDialog(null, "CPF não encontrado no banco de dados.");
     }
 
 
     }//GEN-LAST:event_jButton3ActionPerformed
-        // Método para limpar os campos do formulário
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+        
 private void limparCampos() {
     campoNome.setText("");
     campoCPF.setText("");
