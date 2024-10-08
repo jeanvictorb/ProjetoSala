@@ -15,6 +15,8 @@ import javax.swing.text.DocumentFilter;
 import javax.swing.text.AttributeSet;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
+import screens.Pessoa;
+import screens.PessoaDAO;
 /**
  *
  * @author Windows
@@ -128,6 +130,11 @@ public class FirstForm extends javax.swing.JFrame {
         campoRG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoRGActionPerformed(evt);
+            }
+        });
+        campoRG.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoRGKeyTyped(evt);
             }
         });
 
@@ -360,22 +367,17 @@ public class FirstForm extends javax.swing.JFrame {
     }//GEN-LAST:event_campoDataNascimentoActionPerformed
 
     private void campoRGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoRGActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_campoRGActionPerformed
 
     private void campoCPFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCPFKeyTyped
                                  
-    // Verifica se o CPF tem 11 caracteres
-    if (campoCPF.getText().length() < 11) {
-        // Permite continuar digitando até que o CPF tenha 11 caracteres
+    if (campoCPF.getText().length() < 10) {
         return;
-    } else if (campoCPF.getText().length() == 11) {
-        // Se o CPF tiver 11 caracteres, realiza a ação desejada (ex: pesquisa no banco de dados)
+    } else if (campoCPF.getText().length() == 10) {
         System.out.println("CPF cadastrado, realizando busca...");
-        // Aqui você pode adicionar a lógica de busca do CPF no banco de dados ou lista
     } else {
-        // Impede que o CPF tenha mais de 11 caracteres
-        evt.consume(); // Evita que mais caracteres sejam digitados
+        evt.consume();
         System.out.println("O CPF deve conter exatamente 11 caracteres.");
     }
 
@@ -412,11 +414,59 @@ public class FirstForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        
-        
+     String Nome = campoNome.getText();
+     String CPF = campoCPF.getText();
+     String RG = campoRG.getText();
+     
+     String dataNascimentoStr = campoDataNascimento.getText();
+     Date dataNascimento = null;
+     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+     
+     try{
+         dataNascimento = dateFormat.parse(dataNascimentoStr);
+     }catch (ParseException e){
+         JOptionPane.showMessageDialog(this, "data de Nascimento invalida. Por favor, insira no formata dd/MM/yyyy.");
+         return;
+     }
+     String nomeMae = campoNomeMae.getText();
+     String nomePai = campoNomePai.getText();
+     String unidadePrisional = campoUnidadePrisional.getText();
+     String crime = campoCrime.getText();
+     String statusPrisioneiro = campoStatusPrisioneiro.getText();
+     
+     editarPessoa(CPF, Nome, dataNascimento, nomeMae, nomePai, unidadePrisional, crime, statusPrisioneiro);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void campoRGKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoRGKeyTyped
+    if (campoRG.getText().length() < 8) {
+    } else {
+        evt.consume();
+        System.out.println("O RG deve conter exatamente 8 caracteres.");
+    }
+    }//GEN-LAST:event_campoRGKeyTyped
+    
+    private void editarPessoa(String CPF, String Nome, Date dataDeNascimento, String rg, String nomeMae, String nomePai, String unidadePrisional, String crime){
+        PessoaDAO pessoaDAO = new PessoaDAO();
+        Pessoa pessoaExistente = pessoaDAO.buscarPorCPF(CPF);
         
+        if(pessoaExistente != null){
+            pessoaExistente.setNome(Nome);
+            pessoaExistente.setRg(rg);
+            pessoaExistente.setDataDeNascimento(dataDeNascimento);
+            pessoaExistente.setNomeMae(nomeMae);
+            pessoaExistente.setNomePai(nomePai);
+            pessoaExistente.setUnidadePrisional(unidadePrisional);
+            pessoaExistente.setCrime(crime);
+            
+            
+            JOptionPane.showMessageDialog(this, "Cadastro Atualizado com sucesso!");
+            limparCampos();
+        }else{
+            JOptionPane.showMessageDialog(this, "CPF nao encontrado para edição!");
+        }
+        
+    
+    }
 private void limparCampos() {
     campoNome.setText("");
     campoCPF.setText("");

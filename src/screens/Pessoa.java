@@ -27,7 +27,7 @@ public class Pessoa {
         this.statusPrisioneiro = statusPrisioneiro;
     }
 
-    // Getters
+    // Get
     public String getNome() { return nome; }
     public String getCpf() { return cpf; }
     public String getRg() { return rg; }
@@ -40,7 +40,7 @@ public class Pessoa {
     public String getStatusPrisioneiro() { return statusPrisioneiro; }
     public Date getDataDeSaida() { return dataDeSaida; }
 
-    // Setters
+    // Set
     public void setNome(String nome) { this.nome = nome; }
     public void setCpf(String cpf) { this.cpf = cpf; }
     public void setRg(String rg) { this.rg = rg; }
