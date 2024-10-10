@@ -1,4 +1,4 @@
-package screens;
+package Class;
 
 import java.util.Date;
 

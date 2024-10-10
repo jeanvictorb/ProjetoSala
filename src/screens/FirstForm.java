@@ -15,14 +15,12 @@ import javax.swing.text.DocumentFilter;
 import javax.swing.text.AttributeSet;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
-import screens.Pessoa;
-import screens.PessoaDAO;
+import Class.Pessoa;
+import Class.PessoaDAO;
 /**
  *
  * @author Windows
  */
-
-    
 
 public class FirstForm extends javax.swing.JFrame {
 
@@ -80,370 +78,65 @@ public class FirstForm extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        campoNome = new javax.swing.JTextField();
-        campoCPF = new javax.swing.JTextField();
-        campoRG = new javax.swing.JTextField();
-        campoNomeMae = new javax.swing.JTextField();
-        campoNomePai = new javax.swing.JTextField();
-        campoUnidadePrisional = new javax.swing.JTextField();
-        campoCrime = new javax.swing.JTextField();
-        campoStatusPrisioneiro = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        campoDataNascimento = new javax.swing.JFormattedTextField();
-        campoDataEntrada = new javax.swing.JFormattedTextField();
-        campoDataSaida = new javax.swing.JFormattedTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        campoNome.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 666, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 406, Short.MAX_VALUE)
+        );
+
+        jMenu1.setText("Acesso");
+        jMenuBar1.add(jMenu1);
+
+        jMenu3.setText("Cadastrar");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeActionPerformed(evt);
+                jMenu3ActionPerformed(evt);
             }
         });
+        jMenuBar1.add(jMenu3);
 
-        campoCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoCPFActionPerformed(evt);
-            }
-        });
-        campoCPF.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                campoCPFKeyTyped(evt);
-            }
-        });
+        jMenu2.setText("Buscar");
+        jMenuBar1.add(jMenu2);
 
-        campoRG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoRGActionPerformed(evt);
-            }
-        });
-        campoRG.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                campoRGKeyTyped(evt);
-            }
-        });
-
-        jButton1.setText("Confirmar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Cancelar");
-
-        jLabel2.setText("Nome :");
-
-        jLabel3.setText("CPF :");
-
-        jLabel4.setText("RG :");
-
-        jLabel5.setText("Nome da mãe:");
-
-        jLabel6.setText("Nome do pai:");
-
-        jLabel7.setText("Unidade prisional:");
-
-        jLabel8.setText("Crime:");
-
-        jLabel9.setText("Status do Prisioneiro : ");
-
-        jLabel10.setText("CADASTRO / BUSCA DE PRISIONEIRO");
-
-        jLabel11.setText("Data de nascimento");
-
-        jLabel12.setText("Data de entrada:");
-
-        jLabel13.setText("Data de saida:");
-
-        campoDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        campoDataNascimento.setToolTipText("  /  /");
-        campoDataNascimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoDataNascimentoActionPerformed(evt);
-            }
-        });
-
-        campoDataEntrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-
-        campoDataSaida.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        campoDataSaida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoDataSaidaActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Pesquisar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Editar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(214, 214, 214)
-                .addComponent(jLabel10)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(campoDataEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(451, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(campoNomePai, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                                        .addComponent(campoUnidadePrisional))
-                                    .addGap(174, 174, 174)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoDataSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(campoStatusPrisioneiro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                                                    .addComponent(campoCrime, javax.swing.GroupLayout.Alignment.LEADING))
-                                                .addGap(40, 40, 40))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton4)
-                                                .addGap(29, 29, 29)
-                                                .addComponent(jButton1)
-                                                .addGap(29, 29, 29)))
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(49, 49, 49))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel5))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(campoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                            .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                            .addComponent(campoDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoNomeMae))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
-                        .addGap(87, 87, 87))))
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel10)
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(campoCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(campoDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoNomeMae, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(campoNomePai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoUnidadePrisional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(campoDataEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoCrime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(campoStatusPrisioneiro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(campoDataSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
-                .addGap(42, 42, 42))
+            .addComponent(jDesktopPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeActionPerformed
-
-    }//GEN-LAST:event_campoNomeActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     // Capturando dados dos campos de texto
-    String nome = campoNome.getText();
-    String cpf = campoCPF.getText();
-    String rg = campoRG.getText();
-    
-    // Capturando e convertendo a data de nascimento
-    String dataNascimentoStr = campoDataNascimento.getText(); // Substitua pelo nome correto do campo
-    Date dataDeNascimento = null;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); // Formato da data
-
-    try {
-        dataDeNascimento = dateFormat.parse(dataNascimentoStr);
-    } catch (ParseException e) {
-        e.printStackTrace(); // Você pode mostrar uma mensagem de erro ao usuário
-        return; // Retorne para não continuar se a data não for válida
-    }
-
-    String nomeMae = campoNomeMae.getText();
-    String nomePai = campoNomePai.getText();
-    String unidadePrisional = campoUnidadePrisional.getText();
-    String crime = campoCrime.getText();
-    String statusPrisioneiro = campoStatusPrisioneiro.getText();
-
-    // Criando uma nova instância de Pessoa
-    Pessoa pessoa = new Pessoa(nome, cpf, rg, nomeMae, nomePai, unidadePrisional, crime, statusPrisioneiro);
-    System.out.println("nome: " + pessoa.nome + "\nCPF: " + pessoa.cpf);
-    // Agora você pode fazer algo com a instância da pessoa, como salvar em um banco de dados ou exibir em uma lista.
-    limparCampos();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void campoDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDataNascimentoActionPerformed
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoDataNascimentoActionPerformed
-
-    private void campoRGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoRGActionPerformed
-
-    }//GEN-LAST:event_campoRGActionPerformed
-
-    private void campoCPFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCPFKeyTyped
-                                 
-    if (campoCPF.getText().length() < 10) {
-        return;
-    } else if (campoCPF.getText().length() == 10) {
-        System.out.println("CPF cadastrado, realizando busca...");
-    } else {
-        evt.consume();
-        System.out.println("O CPF deve conter exatamente 11 caracteres.");
-    }
-
-    }//GEN-LAST:event_campoCPFKeyTyped
-
-    private void campoCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCPFActionPerformed
-
-    private void campoDataSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDataSaidaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoDataSaidaActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-                                               
-    String cpf = campoCPF.getText(); 
-
-    PessoaDAO pessoaDAO = new PessoaDAO();
-    Pessoa pessoa = pessoaDAO.buscarPorCPF(cpf); 
-    
-    if (pessoa != null) {
-        campoNome.setText(pessoa.getNome());
-        campoRG.setText(pessoa.getRg());
-        campoNomeMae.setText(pessoa.getNomeMae());
-        campoNomePai.setText(pessoa.getNomePai());
-        campoUnidadePrisional.setText(pessoa.getUnidadePrisional());
-        campoCrime.setText(pessoa.getCrime());
-        campoStatusPrisioneiro.setText(pessoa.getStatusPrisioneiro());
-    } else {
-        JOptionPane.showMessageDialog(null, "CPF não encontrado no banco de dados.");
-    }
-
-
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-     String Nome = campoNome.getText();
-     String CPF = campoCPF.getText();
-     String RG = campoRG.getText();
-     
-     String dataNascimentoStr = campoDataNascimento.getText();
-     Date dataNascimento = null;
-     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-     
-     try{
-         dataNascimento = dateFormat.parse(dataNascimentoStr);
-     }catch (ParseException e){
-         JOptionPane.showMessageDialog(this, "data de Nascimento invalida. Por favor, insira no formata dd/MM/yyyy.");
-         return;
-     }
-     String nomeMae = campoNomeMae.getText();
-     String nomePai = campoNomePai.getText();
-     String unidadePrisional = campoUnidadePrisional.getText();
-     String crime = campoCrime.getText();
-     String statusPrisioneiro = campoStatusPrisioneiro.getText();
-     
-     editarPessoa(CPF, Nome, dataNascimento, nomeMae, nomePai, unidadePrisional, crime, statusPrisioneiro);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void campoRGKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoRGKeyTyped
-    if (campoRG.getText().length() < 8) {
-    } else {
-        evt.consume();
-        System.out.println("O RG deve conter exatamente 8 caracteres.");
-    }
-    }//GEN-LAST:event_campoRGKeyTyped
+        
+        TelaCadastro telaCadUser = new TelaCadastro();
+        jDesktopPane1.add(telaCadUser);
+        
+        telaCadUser.setVisible(true);
+                
+                
+    }//GEN-LAST:event_jMenu3ActionPerformed
     
     private void editarPessoa(String CPF, String Nome, Date dataDeNascimento, String rg, String nomeMae, String nomePai, String unidadePrisional, String crime){
         PessoaDAO pessoaDAO = new PessoaDAO();
@@ -460,26 +153,12 @@ public class FirstForm extends javax.swing.JFrame {
             
             
             JOptionPane.showMessageDialog(this, "Cadastro Atualizado com sucesso!");
-            limparCampos();
         }else{
             JOptionPane.showMessageDialog(this, "CPF nao encontrado para edição!");
         }
         
     
     }
-private void limparCampos() {
-    campoNome.setText("");
-    campoCPF.setText("");
-    campoRG.setText("");
-    campoDataNascimento.setText("");
-    campoNomeMae.setText("");
-    campoNomePai.setText("");
-    campoUnidadePrisional.setText("");
-    campoDataEntrada.setText("");
-    campoCrime.setText("");
-    campoStatusPrisioneiro.setText(""); 
-    campoDataSaida.setText("");
-}
     /**
      * @param args the command line arguments
      */
@@ -518,32 +197,10 @@ private void limparCampos() {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JTextField campoCPF;
-    private javax.swing.JTextField campoCrime;
-    private javax.swing.JFormattedTextField campoDataEntrada;
-    private javax.swing.JFormattedTextField campoDataNascimento;
-    private javax.swing.JFormattedTextField campoDataSaida;
-    private javax.swing.JTextField campoNome;
-    private javax.swing.JTextField campoNomeMae;
-    private javax.swing.JTextField campoNomePai;
-    private javax.swing.JTextField campoRG;
-    private javax.swing.JTextField campoStatusPrisioneiro;
-    private javax.swing.JTextField campoUnidadePrisional;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

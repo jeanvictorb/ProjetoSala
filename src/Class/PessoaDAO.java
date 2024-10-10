@@ -1,6 +1,8 @@
-package screens;
+package Class;
 
 
+import Class.Pessoa;
+import Class.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
